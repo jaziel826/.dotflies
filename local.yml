@@ -125,6 +125,6 @@
      owner: jaziel
      group: jaziel
   - stow:
-    state: present
-    package: '{{ item }}'
-    dir: ./.config
+      state: present
+      package: '{{ item }}'
+      dir: ./.config
