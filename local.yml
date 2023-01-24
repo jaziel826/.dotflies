@@ -29,6 +29,8 @@
 
   - name: install packages
     kewlfft.aur.aur:
+      update_cache: yes 
+      upgrade: yes 
       use: yay
       name:
         - btop
@@ -68,6 +70,7 @@
         - swaync-git 
         - swaysettings-git
       state: present 
+      when: ansible_distribution in ["Archlinux", "EndeavourOS"]
 
   - name: Add the flathub flatpak repository remote to the user installation
     flatpak_remote:
@@ -127,4 +130,10 @@
   - stow:
       state: present
       package: '{{ item }}'
-      dir: ./.config
+      dir: 
+        - ./.config
+        - ./tmux
+        -  ./vim
+        - ./bash
+      target: $HOME
+
