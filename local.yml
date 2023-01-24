@@ -4,33 +4,9 @@
   become: true
 
   tasks:
-  - name: install collections 
-    shell: ansible-galaxy collection install -r ./requirements.yml
-
-  - name: add ansible user
-    user:
-      name: velociraptor
-      system: yes
-
-  - name: set up sudo for ansible user
-    copy:
-      src: files/sudoer_velociraptor
-      dest: /etc/sudoers.d/velociraptor
-      owner: root
-      group: root
-      mode: 0440
-
-  - name: add ansible-pull cron job
-    cron:
-      name: ansible auto-provision
-      user: velociraptor
-      minute: "*/10"
-      job: ansible-pull -o -U https://github.com/jlacroix82/ansible_pull_tutorial.git
-
   - name: install packages
+    tag: aur,package,install
     kewlfft.aur.aur:
-      update_cache: yes 
-      upgrade: yes 
       use: yay
       name:
         - btop
@@ -58,12 +34,14 @@
         - ttf-ms-fonts 
         - ttf-nerd-fonts-symbols-2048-em 
         - ttf-nerd-fonts-symbols-common 
-        - ttf-opensans ttf-ubuntumono-nerd 
+        - ttf-opensans 
+        - ttf-ubuntumono-nerd 
         - ttf-weather-icons 
         - starship 
         - rofi-bluetooth-git 
         - rofi-lbonn-wayland-git 
-        - rofi-wifi-menu-git sway 
+        - rofi-wifi-menu-git 
+        - sway 
         - swayidle 
         - swayimg 
         - swaylock-effects 
@@ -73,6 +51,7 @@
       when: ansible_distribution in ["Archlinux", "EndeavourOS"]
 
   - name: Add the flathub flatpak repository remote to the user installation
+    tag: flatpak,package,install
     flatpak_remote:
       name: flathub
       state: present
@@ -91,18 +70,21 @@
         - com.borgbase.Vorta
       state: present     
   - name: copy btrbk file
+    tag: btrbk,install,backup
     copy:
       src: ./btrbk.conf
       dest: /etc/btrbk/btrbk.conf
       owner: root
       group: root
   - name: copy btrbk_pac file
+    tag: btrbk,install,backup
     copy:
       src: ./btrbk_pac.conf
       dest: /etc/btrbk/btrbk_pac.conf
       owner: root
       group: root
   - name: copy btrbk_logger
+    tag: btrbk_logger,install,backup
     copy:
       src: ./btrbk_logger.conf 
       dest: /etc/btrbk_logger/ 
@@ -122,12 +104,14 @@
 #      value: "'zoom'"
 
   - name: copy .bashrc file
+    tag: bash,install
     copy:
      src: ./bash/.bashrc
      dest: /home/jaziel/.bashrc
      owner: jaziel
      group: jaziel
   - stow:
+    tag: install,stow
       state: present
       package: '{{ item }}'
       dir: 
