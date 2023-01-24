@@ -112,12 +112,12 @@
      group: jaziel
   - stow:
     tag: install,stow
-      state: present
-      package: '{{ item }}'
-      dir: 
-        - ./.config
-        - ./tmux
-        -  ./vim
-        - ./bash
-      target: $HOME
+    state: present
+    package: '{{ item }}'
+    dir: 
+      - ./.config
+      - ./tmux
+      -  ./vim
+      - ./bash
+    target: $HOME
 
