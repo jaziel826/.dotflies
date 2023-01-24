@@ -3,11 +3,12 @@
   connection: local
   become: true
 
-  - name: install collection
-  ansible.galaxy.collection:
-    name:
-      - community.general 
-      - kewlfft.aur 
+  tasks:
+  - name: install collections  
+    ansible.galaxy.collection:
+      name:
+        - community.general 
+        - kewlfft.aur 
     stat: present 
     state: present
 
@@ -31,7 +32,6 @@
       minute: "*/10"
       job: ansible-pull -o -U https://github.com/jlacroix82/ansible_pull_tutorial.git
 
-  tasks:
   - name: install packages
     kewlfft.aur.aur:
     use: yay
