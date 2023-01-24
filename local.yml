@@ -5,7 +5,7 @@
 
   tasks:
   - name: install collections  
-    ansible.galaxy.collection:
+    ansible.galaxy.collections:
       name:
         - community.general 
         - kewlfft.aur 
