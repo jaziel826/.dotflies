@@ -1,0 +1,17 @@
+# /etc/fstab: static file system information.
+#
+# Use 'blkid' to print the universally unique identifier for a device; this may
+# be used with UUID= as a more robust way to name devices that works even if
+# disks are added and removed. See fstab(5).
+#
+# <file system>             <mount point>  <type>  <options>  <dump>  <pass>
+UUID=DC30-0A99 /boot/efi vfat defaults,noatime 0 2
+/dev/mapper/luks-0b96f890-fa2a-4939-bf54-8ed7fbffb96e / btrfs subvol=@,defaults,noatime,compress=zstd 0 0
+/dev/mapper/luks-0b96f890-fa2a-4939-bf54-8ed7fbffb96e /home btrfs subvol=/@home,defaults,noatime,compress=zstd 0 0
+/dev/mapper/luks-0b96f890-fa2a-4939-bf54-8ed7fbffb96e /.snapshots btrfs subvol=/@snapshots,defaults,noatime,compress=zstd 0 0
+/dev/mapper/luks-0b96f890-fa2a-4939-bf54-8ed7fbffb96e /var/cache btrfs subvol=/@cache,defaults,noatime,compress=zstd 0 0
+/dev/mapper/luks-0b96f890-fa2a-4939-bf54-8ed7fbffb96e /var/log btrfs subvol=/@log,defaults,noatime,compress=zstd 0 0
+/dev/mapper/luks-a99318d9-1ce4-4f27-9071-937cbcc745b8 swap swap defaults 0 0
+
+# sshfs#jaziel@100.118.189.98:/mnt/thinkpad /mnt/potato fuse defaults,noauto,delay_connect,IdentityFile=/home/jaziel/.ssh/dell_id,reconnect,ServerAliveInterval=10,ServerAliveCountMax=3 0 2
+truenas.local:/mnt/ssd-storage/docker/vorta /mnt/truenas/vorta nfs _netdev,noauto,bg,nofail,x-systemd.automount,timeo=900 0 2

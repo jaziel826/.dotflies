@@ -1,0 +1,134 @@
+---
+- hosts: localhost
+  connection: local
+  become: true
+
+  - name: install collection
+  ansible.galaxy.collection:
+    name:
+      - community.general 
+      - kewlfft.aur 
+    stat: present 
+    state: present
+
+  - name: add ansible user
+    user:
+      name: velociraptor
+      system: yes
+
+  - name: set up sudo for ansible user
+    copy:
+      src: files/sudoer_velociraptor
+      dest: /etc/sudoers.d/velociraptor
+      owner: root
+      group: root
+      mode: 0440
+
+  - name: add ansible-pull cron job
+    cron:
+      name: ansible auto-provision
+      user: velociraptor
+      minute: "*/10"
+      job: ansible-pull -o -U https://github.com/jlacroix82/ansible_pull_tutorial.git
+
+  tasks:
+  - name: install packages
+    kewlfft.aur.aur:
+    use: yay
+      name:
+        - btop
+        - tmux
+        - vim
+        - flatpak
+        - flathub 
+        - tailscale 
+        - alacritty 
+        - ulauncher
+        - protonvpn-cli 
+        - lf
+        - btrbk-git 
+        - btrbk-pac-git 
+        - auto-cpufreq 
+        - plymouth-git
+        - ttf-bitstream-vera 
+        - ttf-carlito 
+        - ttf-dejavu 
+        - ttf-fira-mono 
+        - ttf-font-awesome 
+        - ttf-hack 
+        - ttf-iosevka-nerd 
+        - ttf-jetbrains-mono 
+        - ttf-liberation 
+        - ttf-ms-fonts 
+        - ttf-nerd-fonts-symbols-2048-em 
+        - ttf-nerd-fonts-symbols-common 
+        - ttf-opensans ttf-ubuntumono-nerd 
+        - ttf-weather-icons 
+        - starship 
+        - rofi-bluetooth-git 
+        - rofi-lbonn-wayland-git 
+        - rofi-wifi-menu-git sway 
+        - swayidle 
+        - swayimg 
+        - swaylock-effects 
+        - swaync-git 
+        - swaysettings-git
+      state: present 
+
+  - name: Add the flathub flatpak repository remote to the user installation
+  community.general.flatpak_remote:
+    name: flathub
+    state: present
+    flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
+    method: user
+  - name: install flatpaks
+    comunity.general.flatpak:
+      name:
+        - com.bitwarden.desktop 
+        - org.onlyoffice.desktopeditors 
+        - us.zoom.Zoom 
+        - org.mozilla.Thunderbird 
+        - org.signal.Signal 
+        - flathub 
+        - com.discordapp.Discord 
+        - com.borgbase.Vorta
+      manager: flatpak 
+      state: present     
+  - name: copy btrbk file
+    copy:
+      src: ./btrbk.conf
+      dest: /etc/btrbk/btrbk.conf
+      owner: root
+      group: root
+  - name: copy btrbk_pac file
+    copy:
+      src: ./btrbk_pac.conf
+      dest: /etc/btrbk/btrbk_pac.conf
+      owner: root
+      group: root
+  - name: copy btrbk_logger
+    copy:
+      src: ./btrbk_logger.conf 
+      dest: /etc/btrbk_logger/ 
+      owner: root
+      group: root 
+
+#  - name: set wallpaper
+#    become_user: jay
+#    dconf:
+#      key: "/org/gnome/desktop/background/picture-uri"
+#      value: "'file:///usr/share/backgrounds/ansible-wallpaper.png'"
+#
+#  - name: set wallpaper position
+#    become_user: jay
+#    dconf:
+#      key: "/org/gnome/desktop/background/picture-options"
+#      value: "'zoom'"
+
+  - name: copy .bashrc file
+    copy:
+     src: ./bash/.bashrc
+     dest: /home/jaziel/.bashrc
+     owner: jaziel
+     group: jaziel
+
