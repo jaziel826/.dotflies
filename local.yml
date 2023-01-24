@@ -7,7 +7,6 @@
   - name: install collections  
     ansible.galaxy.collection:
       name:
-        - community.general 
         - kewlfft.aur 
       state: present
 
@@ -74,23 +73,23 @@
       state: present 
 
   - name: Add the flathub flatpak repository remote to the user installation
-    community.general.flatpak_remote:
-    name: flathub
-    state: present
-    flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
-    method: user
+    flatpak_remote:
+      name: flathub
+      state: present
+      flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo_url
+      method: user
   - name: install flatpaks
-    community.general.flatpak:
-    name:
-      - com.bitwarden.desktop 
-      - org.onlyoffice.desktopeditors 
-      - us.zoom.Zoom 
-      - org.mozilla.Thunderbird 
-      - org.signal.Signal 
-      - flathub 
-      - com.discordapp.Discord 
+    flatpak:
+      name:
+        - com.bitwarden.desktop 
+        - org.onlyoffice.desktopeditors 
+        - us.zoom.Zoom 
+        - org.mozilla.Thunderbird 
+        - org.signal.Signal 
+        - flathub 
+        - com.discordapp.Discord 
         - com.borgbase.Vorta
-    state: present     
+      state: present     
   - name: copy btrbk file
     copy:
       src: ./btrbk.conf
