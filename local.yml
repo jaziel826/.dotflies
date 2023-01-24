@@ -4,11 +4,8 @@
   become: true
 
   tasks:
-  - name: install collections  
-    ansible.galaxy.collection:
-      name:
-        - kewlfft.aur 
-      state: present
+  - name: install collections 
+    shell: ansible-galaxy collection install -r ./requirements.yml
 
   - name: add ansible user
     user:
