@@ -9,8 +9,7 @@
       name:
         - community.general 
         - kewlfft.aur 
-    stat: present 
-    state: present
+      state: present
 
   - name: add ansible user
     user:
@@ -35,65 +34,63 @@
   - name: install packages
     kewlfft.aur.aur:
     use: yay
-      name:
-        - btop
-        - tmux
-        - vim
-        - flatpak
-        - flathub 
-        - tailscale 
-        - alacritty 
-        - ulauncher
-        - protonvpn-cli 
-        - lf
-        - btrbk-git 
-        - btrbk-pac-git 
-        - auto-cpufreq 
-        - plymouth-git
-        - ttf-bitstream-vera 
-        - ttf-carlito 
-        - ttf-dejavu 
-        - ttf-fira-mono 
-        - ttf-font-awesome 
-        - ttf-hack 
-        - ttf-iosevka-nerd 
-        - ttf-jetbrains-mono 
-        - ttf-liberation 
-        - ttf-ms-fonts 
-        - ttf-nerd-fonts-symbols-2048-em 
-        - ttf-nerd-fonts-symbols-common 
-        - ttf-opensans ttf-ubuntumono-nerd 
-        - ttf-weather-icons 
-        - starship 
-        - rofi-bluetooth-git 
-        - rofi-lbonn-wayland-git 
-        - rofi-wifi-menu-git sway 
-        - swayidle 
-        - swayimg 
-        - swaylock-effects 
-        - swaync-git 
-        - swaysettings-git
-      state: present 
+    name:
+    - btop
+    - tmux
+    - vim
+    - flatpak
+    - tailscale 
+    - alacritty 
+    - ulauncher
+    - protonvpn-cli 
+    - lf
+    - btrbk-git 
+    - btrbk-pac-git 
+    - auto-cpufreq 
+    - plymouth-git
+    - ttf-bitstream-vera 
+    - ttf-carlito 
+    - ttf-dejavu 
+    - ttf-fira-mono 
+    - ttf-font-awesome 
+    - ttf-hack 
+    - ttf-iosevka-nerd 
+    - ttf-jetbrains-mono 
+    - ttf-liberation 
+    - ttf-ms-fonts 
+    - ttf-nerd-fonts-symbols-2048-em 
+    - ttf-nerd-fonts-symbols-common 
+    - ttf-opensans ttf-ubuntumono-nerd 
+    - ttf-weather-icons 
+    - starship 
+    - rofi-bluetooth-git 
+    - rofi-lbonn-wayland-git 
+    - rofi-wifi-menu-git sway 
+    - swayidle 
+    - swayimg 
+    - swaylock-effects 
+    - swaync-git 
+    - swaysettings-git
+    state: present 
 
   - name: Add the flathub flatpak repository remote to the user installation
-  community.general.flatpak_remote:
+    community.general.flatpak_remote:
     name: flathub
     state: present
     flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
     method: user
   - name: install flatpaks
-    comunity.general.flatpak:
-      name:
-        - com.bitwarden.desktop 
-        - org.onlyoffice.desktopeditors 
-        - us.zoom.Zoom 
-        - org.mozilla.Thunderbird 
-        - org.signal.Signal 
-        - flathub 
-        - com.discordapp.Discord 
+    community.general.flatpak:
+    name:
+      - com.bitwarden.desktop 
+      - org.onlyoffice.desktopeditors 
+      - us.zoom.Zoom 
+      - org.mozilla.Thunderbird 
+      - org.signal.Signal 
+      - flathub 
+      - com.discordapp.Discord 
         - com.borgbase.Vorta
-      manager: flatpak 
-      state: present     
+    state: present     
   - name: copy btrbk file
     copy:
       src: ./btrbk.conf
