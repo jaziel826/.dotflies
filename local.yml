@@ -5,7 +5,7 @@
 
   tasks:
   - name: install collections  
-  ansible.galaxy.collections:
+    ansible.galaxy.collections:
       name:
         - community.general 
         - kewlfft.aur 
@@ -32,46 +32,46 @@
       job: ansible-pull -o -U https://github.com/jlacroix82/ansible_pull_tutorial.git
 
   - name: install packages
-  kewlfft.aur.aur:
-    use: yay
-    name:
-    - btop
-    - tmux
-    - vim
-    - flatpak
-    - tailscale 
-    - alacritty 
-    - ulauncher
-    - protonvpn-cli 
-    - lf
-    - btrbk-git 
-    - btrbk-pac-git 
-    - auto-cpufreq 
-    - plymouth-git
-    - ttf-bitstream-vera 
-    - ttf-carlito 
-    - ttf-dejavu 
-    - ttf-fira-mono 
-    - ttf-font-awesome 
-    - ttf-hack 
-    - ttf-iosevka-nerd 
-    - ttf-jetbrains-mono 
-    - ttf-liberation 
-    - ttf-ms-fonts 
-    - ttf-nerd-fonts-symbols-2048-em 
-    - ttf-nerd-fonts-symbols-common 
-    - ttf-opensans ttf-ubuntumono-nerd 
-    - ttf-weather-icons 
-    - starship 
-    - rofi-bluetooth-git 
-    - rofi-lbonn-wayland-git 
-    - rofi-wifi-menu-git sway 
-    - swayidle 
-    - swayimg 
-    - swaylock-effects 
-    - swaync-git 
-    - swaysettings-git
-    state: present 
+    kewlfft.aur.aur:
+      use: yay
+      name:
+        - btop
+        - tmux
+        - vim
+        - flatpak
+        - tailscale 
+        - alacritty 
+        - ulauncher
+        - protonvpn-cli 
+        - lf
+        - btrbk-git 
+        - btrbk-pac-git 
+        - auto-cpufreq 
+        - plymouth-git
+        - ttf-bitstream-vera 
+        - ttf-carlito 
+        - ttf-dejavu 
+        - ttf-fira-mono 
+        - ttf-font-awesome 
+        - ttf-hack 
+        - ttf-iosevka-nerd 
+        - ttf-jetbrains-mono 
+        - ttf-liberation 
+        - ttf-ms-fonts 
+        - ttf-nerd-fonts-symbols-2048-em 
+        - ttf-nerd-fonts-symbols-common 
+        - ttf-opensans ttf-ubuntumono-nerd 
+        - ttf-weather-icons 
+        - starship 
+        - rofi-bluetooth-git 
+        - rofi-lbonn-wayland-git 
+        - rofi-wifi-menu-git sway 
+        - swayidle 
+        - swayimg 
+        - swaylock-effects 
+        - swaync-git 
+        - swaysettings-git
+      state: present 
 
   - name: Add the flathub flatpak repository remote to the user installation
   community.general.flatpak_remote:
