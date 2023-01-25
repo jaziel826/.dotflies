@@ -1,4 +1,4 @@
-files/tmux/.tmux/plugins/
-files/tmux/.tmux/resurrect
+files/tmux/.tmux/plugins/*
+files/tmux/.tmux/resurrect/*
 /files/.config/.config/polybar_old/scripts/Tiny_polybar
 

@@ -1,0 +1,5 @@
+pane	main	1	1	:*	1	ThinkPad	:/.snapshots	1	bash	:
+pane	main	2	0	:-	1	ThinkPad	:/home/jaziel	1	bash	:
+window	main	1	:bash	1	:*	c13d,115x26,0,0,0	:
+window	main	2	:bash	0	:-	ba5e,80x26,0,0,1	:
+state	main	

@@ -1,130 +1,27 @@
 ---
-- hosts: localhost 
+- hosts: all
   connection: local
   become: true
+  pre_tasks:
+    - name: pre-run | update package cache and update (arch)
+      tags: always
+      pacman: 
+        update_cache: yes
+        upgrade: yes
+      changed_when: False
+      when: ansible_distribution in ["Archlinux", "Endea"]
 
+    - name: pre-run | update package cache and update (debian, etc)
+      tags: always
+      apt: 
+        update_cache: yes
+        update_only: yes
+      changed_when: False
+      when: ansible_distribution in ["Debian", "Ubuntu" "Pop!_OS"]
   tasks:
-  - name: install packages
-    tags: "aur,package,install"
-    kewlfft.aur.aur:
-      use: yay
-      name:
-        - btop
-        - tmux
-        - vim
-        - flatpak
-        - tailscale 
-        - alacritty 
-        - ulauncher
-        - protonvpn-cli 
-        - lf
-        - btrbk-git 
-        - btrbk-pac-git 
-        - auto-cpufreq 
-        - plymouth-git
-        - ttf-bitstream-vera 
-        - ttf-carlito 
-        - ttf-dejavu 
-        - ttf-fira-mono 
-        - ttf-font-awesome 
-        - ttf-hack 
-        - ttf-iosevka-nerd 
-        - ttf-jetbrains-mono 
-        - ttf-liberation 
-        - ttf-ms-fonts 
-        - ttf-nerd-fonts-symbols-2048-em 
-        - ttf-nerd-fonts-symbols-common 
-        - ttf-opensans 
-        - ttf-ubuntumono-nerd 
-        - ttf-weather-icons 
-        - starship 
-        - rofi-bluetooth-git 
-        - rofi-lbonn-wayland-git 
-        - rofi-wifi-menu-git 
-        - sway 
-        - swayidle 
-        - swayimg 
-        - swaylock-effects 
-        - swaync-git 
-        - swaysettings-git
-      state: present 
-      when: ansible_distribution in ["Archlinux", "EndeavourOS"]
-
-  - name: Add the flathub flatpak repository remote to the user installation
-    tags: "flatpak,package,install"
-    flatpak_remote:
-      name: flathub
-      state: present
-      flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo_url
-      method: user
-  - name: install flatpaks
-    flatpak:
-      name:
-        - com.bitwarden.desktop 
-        - org.onlyoffice.desktopeditors 
-        - us.zoom.Zoom 
-        - org.mozilla.Thunderbird 
-        - org.signal.Signal 
-        - flathub 
-        - com.discordapp.Discord 
-        - com.borgbase.Vorta
-      state: present     
-  - name: copy btrbk file
-    tags: "btrbk,install,backup"
-    copy:
-      src: ./btrbk.conf
-      dest: /etc/btrbk/btrbk.conf
-      owner: root
-      group: root
-  - name: copy btrbk_pac file
-    tags: "btrbk,install,backup"
-    copy:
-      src: ./btrbk_pac.conf
-      dest: /etc/btrbk/btrbk_pac.conf
-      owner: root
-      group: root
-  - name: copy btrbk_logger
-    tags: "btrbk_logger,install,backup"
-    copy:
-      src: ./btrbk_logger.conf 
-      dest: /etc/btrbk_logger/ 
-      owner: root
-      group: root 
-
-#  - name: set wallpaper
-#    become_user: jay
-#    dconf:
-#      key: "/org/gnome/desktop/background/picture-uri"
-#      value: "'file:///usr/share/backgrounds/ansible-wallpaper.png'"
-#
-#  - name: set wallpaper position
-#    become_user: jay
-#    dconf:
-#      key: "/org/gnome/desktop/background/picture-options"
-#      value: "'zoom'"
-
-  - name: copy .bashrc file
-    tags: "bash,install"
-    copy:
-     src: ./bash/.bashrc
-     dest: /home/jaziel/.bashrc
-     owner: jaziel
-     group: jaziel
-#  - name: stow dotfiles
-#    tags: "install,stow"
-#    shell: "stow -d $HOME/.dotfiles/files/* --target $HOME --verbose=2"  
-#    register: result  
-#    changed_when: 'result.stderr is search("LINK: ")'
-  - name: stow dotfiles
-    become_user: jaziel
-    tags: "install,stow"
-    stow:
-      state: latest 
-      package: '{{ item }}'
-      dir: ./files/
-      target: $HOME
-    with_items:  
-      - .config
-      - tmux
-      - vim
-      - bash
+  - name: install collections 
+    shell: ansible-galaxy collection install -r ./requirements.yml
+    when: ansible_distribution in ["Archlinux", "EndeavourOS"]
+  - import_tasks: tasks/user.yml
+  - import_tasks: tasks/files.yml
+  - import_tasks: tasks/packages.yml

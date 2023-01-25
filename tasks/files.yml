@@ -1,0 +1,105 @@
+- name: create paths
+  tags: "install,file"
+  file:
+    path: /etc/btrbk 
+    owner: root 
+    group: root
+    state: directory 
+- name: create paths
+  tags: "install,file"
+  file:
+    path: /etc/btrbk_logger 
+    owner: root 
+    group: root
+    state: directory 
+
+- name: copy btrbk file
+  tags: "btrbk,install,backup"
+  copy:
+    src: ./tasks/files/btrbk.conf
+    dest: /etc/btrbk/btrbk.conf
+    owner: root
+    group: root
+- name: copy btrbk_pac file
+  tags: "btrbk,install,backup"
+  copy:
+    src: files/btrbk_pac.conf
+    dest: /etc/btrbk/btrbk_pac.conf
+    owner: root
+    group: root
+- name: copy btrbk_logger
+  tags: "btrbk_logger,install,backup"
+  copy:
+    src: files/btrbk_logger.conf 
+    dest: /etc/btrbk_logger/ 
+    owner: root
+    group: root 
+
+#  - name: set wallpaper
+#    become_user: jay
+#    dconf:
+#      key: "/org/gnome/desktop/background/picture-uri"
+#      value: "'file:///usr/share/backgrounds/ansible-wallpaper.png'"
+#
+#  - name: set wallpaper position
+#    become_user: jay
+#    dconf:
+#      key: "/org/gnome/desktop/background/picture-options"
+#      value: "'zoom'"
+
+#- name: copy .bashrc file
+# tags: "bash,install"
+#  copy:
+#   src: ./bash/.bashrc
+#   dest: /home/jaziel/.bashrc
+#   owner: jaziel
+#   group: jaziel
+#  - name: stow dotfiles
+#    tags: "install,stow"
+#    shell: "stow -d $HOME/.dotfiles/files/* --target $HOME --verbose=2"  
+#    register: result  
+#    changed_when: 'result.stderr is search("LINK: ")'
+- name: cp dotfiles
+  become_user: jaziel 
+  tags: "install,dotfiles"
+  copy: 
+    src: '{{item}}'
+    dest: $HOME/.dotfiles/files
+    owner: jaziel
+    group: jaziel
+- name: create paths
+  become_user: jaziel
+  tags: "install,dotfiles,file"
+  file:
+    path: $HOME/.dotfiles/files
+    owner: jaziel
+    group: jaziel
+    state: directory 
+
+- name: cp dotfiles
+  become_user: jaziel 
+  tags: "install,dotfiles"
+  copy: 
+    src: '{{item}}'
+    dest: $HOME/.dotfiles/files
+    owner: jaziel
+    group: jaziel
+  with_items:
+    - .config
+    - tmux
+    - vim
+    - bash
+
+- name: stow dotfiles
+  become_user: jaziel
+  tags: "install,stow"
+  stow:
+    state: latest
+    package: '{{ item }}'
+    dir: files/
+    target: $HOME
+  with_items:  
+    - .config
+    - tmux
+    - vim
+    - bash
