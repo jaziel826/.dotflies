@@ -1,0 +1,3 @@
+pane	main	1	1	:*	1	ThinkPad	:/home/jaziel	1	bash	:lf
+window	main	1	:bash	1	:*	ba5d,80x26,0,0,0	:
+state	main	

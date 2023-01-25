@@ -1,0 +1,5 @@
+pane	main	1	1	:*	1	ThinkPad	:/.snapshots	1	btop	:btop
+pane	main	2	0	:-	1	ThinkPad	:/home/jaziel	1	sudoedit	:sudoedit /etc/btrbk/btrbk_pac.conf
+window	main	1	:btop	1	:*	c67d,127x27,0,0,0	:
+window	main	2	:sudoedit	0	:-	c67e,127x27,0,0,1	:
+state	main	

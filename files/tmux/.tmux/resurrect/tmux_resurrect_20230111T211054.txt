@@ -1,0 +1,5 @@
+pane	main	1	1	:*	1	ThinkPad	:/.snapshots/root_time.20230111T2106	1	sudoedit	:sudoedit /etc/btrbk/btrbk.conf
+pane	main	2	0	:-	1	ThinkPad	:/home/jaziel	1	bash	:
+window	main	1	:sudoedit	1	:*	c9bd,192x47,0,0,0	:
+window	main	2	:bash	0	:-	c9be,192x47,0,0,1	:
+state	main	

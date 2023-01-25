@@ -1,11 +1,11 @@
 ---
-- hosts: all
+- hosts: localhost 
   connection: local
   become: true
 
   tasks:
   - name: install packages
-    tag: "aur,package,install"
+    tags: "aur,package,install"
     kewlfft.aur.aur:
       use: yay
       name:
@@ -51,7 +51,7 @@
       when: ansible_distribution in ["Archlinux", "EndeavourOS"]
 
   - name: Add the flathub flatpak repository remote to the user installation
-    tag: "flatpak,package,install"
+    tags: "flatpak,package,install"
     flatpak_remote:
       name: flathub
       state: present
@@ -70,21 +70,21 @@
         - com.borgbase.Vorta
       state: present     
   - name: copy btrbk file
-    tag: "btrbk,install,backup"
+    tags: "btrbk,install,backup"
     copy:
       src: ./btrbk.conf
       dest: /etc/btrbk/btrbk.conf
       owner: root
       group: root
   - name: copy btrbk_pac file
-    tag: "btrbk,install,backup"
+    tags: "btrbk,install,backup"
     copy:
       src: ./btrbk_pac.conf
       dest: /etc/btrbk/btrbk_pac.conf
       owner: root
       group: root
   - name: copy btrbk_logger
-    tag: "btrbk_logger,install,backup"
+    tags: "btrbk_logger,install,backup"
     copy:
       src: ./btrbk_logger.conf 
       dest: /etc/btrbk_logger/ 
@@ -104,20 +104,27 @@
 #      value: "'zoom'"
 
   - name: copy .bashrc file
-    tag: "bash,install"
+    tags: "bash,install"
     copy:
      src: ./bash/.bashrc
      dest: /home/jaziel/.bashrc
      owner: jaziel
      group: jaziel
-  - stow:
-    tag: "install,stow"
-    state: present
-    package: '{{ item }}'
-    dir: 
-      - ./.config
-      - ./tmux
-      -  ./vim
-      - ./bash
-    target: $HOME
-
+#  - name: stow dotfiles
+#    tags: "install,stow"
+#    shell: "stow -d $HOME/.dotfiles/files/* --target $HOME --verbose=2"  
+#    register: result  
+#    changed_when: 'result.stderr is search("LINK: ")'
+  - name: stow dotfiles
+    become_user: jaziel
+    tags: "install,stow"
+    stow:
+      state: latest 
+      package: '{{ item }}'
+      dir: ./files/
+      target: $HOME
+    with_items:  
+      - .config
+      - tmux
+      - vim
+      - bash
