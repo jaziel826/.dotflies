@@ -1,3 +1,0 @@
-pane	main	1	1	:*	1	ThinkPad	:/home/jaziel	1	sudoedit	:sudoedit /etc/fstab
-window	main	1	:sudoedit	1	:*	c9bd,192x47,0,0,0	:
-state	main	
