@@ -83,14 +83,14 @@
 - name: cp dotfiles
   become_user: jaziel 
   tags: "install,dotfiles"
-  ansible.posix.synchronize: 
+  copy:
     src: '{{item}}'
     dest: $HOME/.dotfiles/files
-    owner: yes 
-    group: yes
+    owner: jaziel
+    group: jaziel
   with_items:
     - ./files/.config
-    - ./filestmux
+    - ./files/tmux
     - ./files/vim
     - ./files/bash
 
