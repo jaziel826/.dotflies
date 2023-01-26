@@ -1,7 +1,8 @@
 - name: install packages
-  become: true
   tags: "aur,package,install"
   kewlfft.aur.aur:
+  become: true
+  become_user: velociraptor
     use: yay
     name:
       - btop
@@ -12,8 +13,8 @@
       - flatpak
       - tailscale 
       - alacritty 
-#      - ulauncher
-#      - protonvpn-cli 
+      - ulauncher
+      - protonvpn-cli 
       - lf
       - btrbk-git 
       - btrbk-pac-git 
