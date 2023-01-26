@@ -7,9 +7,9 @@
       tags: always
       pacman: 
         update_cache: yes
-        upgrade: yes
+        upgrade: no
       changed_when: False
-      when: ansible_distribution in ["Archlinux", "Endea"]
+      when: ansible_distribution in ["Archlinux", "EndeavourOS"]
 
     - name: pre-run | update package cache and update (debian, etc)
       tags: always

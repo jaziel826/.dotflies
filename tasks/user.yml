@@ -2,6 +2,10 @@
   user:
     name: velociraptor
     system: yes
+- name: add ssh key for simone
+  authorized_key:
+    user: velociraptor
+    key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJHHyFw2Hoxf6zpNe9L28iwVyET5FQUHAJ1hZQInJWS4 laptop"
 
 - name: set up sudo for ansible user
   copy:
@@ -16,4 +20,4 @@
     name: ansible auto-provision
     user: velociraptor
     minute: "*/10"
-    job: ansible-pull -o -U https://github.com/jlacroix82/ansible_pull_tutorial.git
+    job: ansible-pull -o -U https://github.com/jaziel826/.dotfiles.git

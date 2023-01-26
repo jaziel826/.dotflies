@@ -14,6 +14,7 @@
     state: directory 
 
 - name: copy btrbk file
+  become_user: root
   tags: "btrbk,install,backup"
   copy:
     src: ./tasks/files/btrbk.conf
@@ -21,19 +22,30 @@
     owner: root
     group: root
 - name: copy btrbk_pac file
+  become_user: root
   tags: "btrbk,install,backup"
   copy:
-    src: files/btrbk_pac.conf
+    src: ./tasks/files/btrbk_pac.conf
     dest: /etc/btrbk/btrbk_pac.conf
     owner: root
     group: root
+#- name: set root owner
+#  tags: "install,file,btrbk"
+#  ansible.builtin.file:
+#    path: 
+#      - /etc/btrbk/btrbk.conf 
+#      - /etc/btrbk/btrbk_pac.conf
+#    owner: root 
+#    group: root
+#    mode: 0644
+#    state: file
 - name: copy btrbk_logger
   tags: "btrbk_logger,install,backup"
-  copy:
+  ansible.posix.synchronize:
     src: files/btrbk_logger.conf 
     dest: /etc/btrbk_logger/ 
-    owner: root
-    group: root 
+#   owner: root
+#   group: root 
 
 #  - name: set wallpaper
 #    become_user: jay
@@ -59,14 +71,6 @@
 #    shell: "stow -d $HOME/.dotfiles/files/* --target $HOME --verbose=2"  
 #    register: result  
 #    changed_when: 'result.stderr is search("LINK: ")'
-- name: cp dotfiles
-  become_user: jaziel 
-  tags: "install,dotfiles"
-  copy: 
-    src: '{{item}}'
-    dest: $HOME/.dotfiles/files
-    owner: jaziel
-    group: jaziel
 - name: create paths
   become_user: jaziel
   tags: "install,dotfiles,file"
@@ -79,7 +83,7 @@
 - name: cp dotfiles
   become_user: jaziel 
   tags: "install,dotfiles"
-  copy: 
+  ansible.posix.synchronize: 
     src: '{{item}}'
     dest: $HOME/.dotfiles/files
     owner: jaziel
