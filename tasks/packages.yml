@@ -84,7 +84,6 @@
       - us.zoom.Zoom 
       - org.mozilla.Thunderbird 
       - org.signal.Signal 
-      - flathub 
       - com.discordapp.Discord 
       - com.borgbase.Vorta
     state: present 
