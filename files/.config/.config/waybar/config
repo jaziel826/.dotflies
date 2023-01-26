@@ -137,7 +137,7 @@
         "format-linked": "{ifname} (No IP) ",
         "format-disconnected": "Disconnected ⚠",
         "format-alt": "{ifname}: {ipaddr}/{cidr}",
-        "on-click-right":"rofi-wifi-menu"
+        "on-click-right":"networkmanager_dmenu"
     },
     "pulseaudio": {
         "scroll-step": 5, // %, can be a float
