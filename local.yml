@@ -10,12 +10,29 @@
         upgrade: no
       changed_when: False
       when: ansible_distribution in ["Archlinux", "EndeavourOS"]
+    - name: install requirements
+      tags: always 
+      pacman:
+        name:
+          - cronie
+      changed_when: False
+      when: ansible_distribution in ["Archlinux", "EndeavourOS"]
+
+    - name: pre-run | install requirements (debian, etc)
+      tags: always
+      apt: 
+        name: 
+          - cron 
+      changed_when: False
+      when: ansible_distribution in ["Debian", "Ubuntu" "Pop!_OS"]
 
     - name: pre-run | update package cache and update (debian, etc)
       tags: always
       apt: 
         update_cache: yes
         update_only: yes
+        name: 
+          - cron 
       changed_when: False
       when: ansible_distribution in ["Debian", "Ubuntu" "Pop!_OS"]
     - name: install collections 
