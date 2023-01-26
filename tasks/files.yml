@@ -89,10 +89,10 @@
     owner: yes 
     group: yes
   with_items:
-    - .config
-    - tmux
-    - vim
-    - bash
+    - ./files/.config
+    - ./filestmux
+    - ./files/vim
+    - ./files/bash
 
 - name: stow dotfiles
   become_user: jaziel
