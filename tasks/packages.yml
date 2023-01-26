@@ -5,6 +5,7 @@
     name:
       - btop
       - tmux
+      - cronie
       - vim
       - flatpak
       - tailscale 
@@ -51,6 +52,7 @@
     name:
       - btop
       - tmux
+      - cron
       - vim
       - flatpak
       - tailscale 
