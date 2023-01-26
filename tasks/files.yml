@@ -86,8 +86,8 @@
   ansible.posix.synchronize: 
     src: '{{item}}'
     dest: $HOME/.dotfiles/files
-    owner: jaziel
-    group: jaziel
+    owner: yes 
+    group: yes
   with_items:
     - .config
     - tmux
