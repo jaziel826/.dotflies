@@ -41,11 +41,11 @@
 #    state: file
 - name: copy btrbk_logger
   tags: "btrbk_logger,install,backup"
-  ansible.posix.synchronize:
+  copy:
     src: ./task/files/btrbk_logger.conf 
     dest: /etc/btrbk_logger/ 
-#   owner: root
-#   group: root 
+   owner: root
+   group: root 
 
 #  - name: set wallpaper
 #    become_user: jay
