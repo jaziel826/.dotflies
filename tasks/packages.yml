@@ -6,6 +6,7 @@
       - btop
       - tmux
       - cronie
+      - rsync
       - vim
       - flatpak
       - tailscale 
@@ -53,6 +54,7 @@
       - btop
       - tmux
       - cron
+      - rsync
       - vim
       - flatpak
       - tailscale 
