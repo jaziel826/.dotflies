@@ -98,7 +98,7 @@
   become_user: jaziel
   tags: "install,stow"
   stow:
-    state: latest
+    state: supress
     package: '{{ item }}'
     dir: files/
     target: $HOME
