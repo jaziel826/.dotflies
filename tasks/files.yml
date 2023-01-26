@@ -44,8 +44,8 @@
   copy:
     src: ./task/files/btrbk_logger.conf 
     dest: /etc/btrbk_logger/ 
-   owner: root
-   group: root 
+    owner: root
+    group: root 
 
 #  - name: set wallpaper
 #    become_user: jay
