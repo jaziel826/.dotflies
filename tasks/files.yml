@@ -42,7 +42,7 @@
 - name: copy btrbk_logger
   tags: "btrbk_logger,install,backup"
   copy:
-    src: ./task/files/btrbk_logger.conf 
+    src: ./tasks/files/btrbk_logger.conf 
     dest: /etc/btrbk_logger/ 
     owner: root
     group: root 
