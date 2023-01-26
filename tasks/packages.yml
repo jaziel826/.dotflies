@@ -13,7 +13,7 @@
       - tailscale 
       - alacritty 
 #      - ulauncher
-      - protonvpn-cli 
+#      - protonvpn-cli 
       - lf
       - btrbk-git 
       - btrbk-pac-git 
