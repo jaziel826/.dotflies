@@ -11,7 +11,7 @@
       - flatpak
       - tailscale 
       - alacritty 
-      - ulauncher
+#      - ulauncher
       - protonvpn-cli 
       - lf
       - btrbk-git 
