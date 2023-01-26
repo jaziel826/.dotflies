@@ -1,8 +1,6 @@
 - name: install packages
   tags: "aur,package,install"
   kewlfft.aur.aur:
-  become: true
-  become_user: velociraptor
     use: yay
     name:
       - btop
@@ -47,6 +45,8 @@
       - swaysettings-git
       - networkmanager-dmenu-git
     state: present 
+  become_user: velociraptor
+  become: true
   when: ansible_distribution in ["Archlinux", "EndeavourOS"]
 - name: install packages
   become: true
