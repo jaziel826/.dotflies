@@ -100,7 +100,7 @@
   stow:
     state: supress
     package: '{{ item }}'
-    dir: files/
+    dir: $HOME/.dotfiles/files
     target: $HOME
   with_items:  
     - .config
