@@ -1,3 +1,9 @@
+- name: install tailscale (Debian)
+  become_user: velociraptor
+  tags: "apt,package,install"
+  shell: curl -fsSL https://tailscale.com/install.sh | sh
+  when: ansible_distribution == "Pop!_OS"
+
 - name: install packages (Debian)
   become: true
   tags: "apt,package,install"
