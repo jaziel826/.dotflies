@@ -12,7 +12,7 @@
   when: ansible_distribution == "Pop!_OS"
 
 - name: install ProtonVPN .deb 
-  become_user: velociraptor
+  become: true
   apt:
     deb: /tmp/protonvpn-stable-release_1.0.3_all.deb
   when: ansible_distribution == "Pop!_OS"
