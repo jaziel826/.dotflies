@@ -36,7 +36,7 @@
       - ttf-weather-icons 
       - starship 
       - rofi-bluetooth-git 
-#      - rofi-lbonn-wayland-git 
+      - rofi-lbonn-wayland-git 
       - rofi-wifi-menu-git 
       - sway 
       - swayidle 
