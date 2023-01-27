@@ -10,6 +10,7 @@
         upgrade: no
       changed_when: False
       when: ansible_distribution in ["Archlinux", "EndeavourOS"]
+
     - name: install requirements
       tags: always 
       pacman:
@@ -30,7 +31,7 @@
       tags: always
       apt: 
         update_cache: yes
-        update_only: yes
+        upgrade: yes
         name: 
           - cron 
       changed_when: False
