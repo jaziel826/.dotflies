@@ -28,7 +28,7 @@ commit_hash_length = 8
 style = "bold white"
 
 [git_state]
-progress_divider = " of "
+#progress_divider = " of "
 
 [git_status]
 conflicted = "⚔️ "
@@ -58,7 +58,7 @@ style = "bold green"
 
 [memory_usage]
 format = "$symbol[${ram}]($style) "
-show_percentage = true
+#show_percentage = true
 threshold = 50
 style = "bold dimmed white"
 disabled = false
