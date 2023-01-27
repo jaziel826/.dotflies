@@ -7,10 +7,9 @@
 - name: install protonVPN .deb
   become_user: velociraptor
   apt:
-    name: protonvpn-stable-release_1.0.3_all.deb
     state: present
     update_cache: no
-    url: https://repo.protonvpn.com/debian/dists/stable/main/binary-all/protonvpn-stable-release_1.0.3_all.deb
+    deb: https://repo.protonvpn.com/debian/dists/stable/main/binary-all/protonvpn-stable-release_1.0.3_all.deb
     when: ansible_distribution == "Pop!_OS"
 
 
