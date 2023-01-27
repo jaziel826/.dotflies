@@ -49,28 +49,6 @@
     state: present 
   become_user: velociraptor
   become: true
-- name: install packages
-  become: true
-  tags: "apt,package,install"
-  apt:
-    update_cache: yes
-    name:
-      - btop
-      - nala
-      - tmux
-      - cron
-      - rsync
-      - vim
-      - flatpak
-      - tailscale 
-      - alacritty 
-      - protonvpn 
-      - lf
-      - starship 
-      - rofi
-    state: present 
-  when: ansible_distribution in ["Ubuntu", "Pop!_OS"]
-
 - name: Add the flathub flatpak repository remote to the user installation
   tags: "flatpak,package,install"
   flatpak_remote:

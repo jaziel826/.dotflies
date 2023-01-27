@@ -1,0 +1,41 @@
+- name: install packages
+  become: true
+  tags: "apt,package,install"
+  apt:
+    update_cache: yes
+    name:
+      - btop
+      - nala
+      - tmux
+      - cron
+      - rsync
+      - vim
+      - flatpak
+      - tailscale 
+      - alacritty 
+      - protonvpn 
+      - lf
+      - starship 
+      - rofi
+    state: present 
+  when: ansible_distribution in ["Ubuntu", "Pop!_OS"]
+
+- name: Add the flathub flatpak repository remote to the user installation
+  tags: "flatpak,package,install"
+  flatpak_remote:
+    name: flathub
+    state: present
+    flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo_url
+    method: user
+- name: install flatpaks
+  flatpak:
+    name:
+      - com.bitwarden.desktop 
+      - org.onlyoffice.desktopeditors 
+      - us.zoom.Zoom 
+      - org.mozilla.Thunderbird 
+      - org.signal.Signal 
+      - com.discordapp.Discord 
+      - com.borgbase.Vorta
+    state: present 
+   
