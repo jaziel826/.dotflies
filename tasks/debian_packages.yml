@@ -18,7 +18,7 @@
       - starship 
       - rofi
     state: present 
-  when: ansible_distribution in ["Ubuntu", "Pop!_OS"]
+  when: ansible_distribution == "Pop!_OS"
 
 - name: Add the flathub flatpak repository remote to the user installation
   tags: "flatpak,package,install"

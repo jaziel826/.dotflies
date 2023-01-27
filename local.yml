@@ -24,7 +24,7 @@
         name: 
           - cron 
       changed_when: False
-      when: ansible_distribution in ["Debian", "Ubuntu" "Pop!_OS"]
+      when: ansible_distribution == "Pop!_OS"
 
     - name: pre-run | update package cache and update (debian, etc)
       tags: always
@@ -34,7 +34,7 @@
         name: 
           - cron 
       changed_when: False
-      when: ansible_distribution in ["Debian", "Ubuntu" "Pop!_OS"]
+      when: ansible_distribution == "Pop!_OS"
     - name: install collections 
       shell: ansible-galaxy collection install -r ./requirements.yml
   tasks:
