@@ -1,4 +1,4 @@
-- name: install packages
+- name: install packages (arch)
   tags: "aur,package,install"
   when: ansible_distribution in ["Archlinux", "EndeavourOS"]
   kewlfft.aur.aur:

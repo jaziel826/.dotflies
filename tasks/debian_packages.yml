@@ -1,4 +1,4 @@
-- name: install packages
+- name: install packages (Debian)
   become: true
   tags: "apt,package,install"
   apt:
@@ -14,7 +14,7 @@
       - tailscale 
       - alacritty 
       - protonvpn 
-      - lf
+      - lfm
       - starship 
       - rofi
     state: present 
@@ -25,7 +25,7 @@
   flatpak_remote:
     name: flathub
     state: present
-    flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo_url
+    flatpakrepo_url: https://flathub.org/repo/flathub.flatpakrepo
     method: user
 - name: install flatpaks
   flatpak:
