@@ -1,13 +1,16 @@
 - name: add ansible user
+  tags: user
   user:
     name: velociraptor
     system: yes
 - name: add ssh key for velociraptor
+  tags: user
   authorized_key:
     user: velociraptor
     key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJHHyFw2Hoxf6zpNe9L28iwVyET5FQUHAJ1hZQInJWS4 laptop"
 
 - name: set up sudo for ansible user
+  tags: user
   copy:
     src: files/sudoer_velociraptor
     dest: /etc/sudoers.d/velociraptor
