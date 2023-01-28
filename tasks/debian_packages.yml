@@ -57,6 +57,14 @@
   tags: "cargo,package"
   when: ansible_distribution == "Pop!_OS"
 
+- name: Add directory to PATH
+  lineinfile:
+    path: /home/jaziel/.cargo/bin
+    state: present
+    regexp: '^PATH='
+    line: 'PATH="/home/jaziel/.cargo/bin:{{ ansible_env.PATH }}"'
+
+
 - name: Add the flathub flatpak repository remote to the user installation
   tags: "flatpak,package,install"
   flatpak_remote:
