@@ -9,19 +9,19 @@
   become_user: velociraptor
   get_url:
     url: https://repo.protonvpn.com/debian/dists/stable/main/binary-all/{{ protonvpn }}.deb
-    dest: /tmp/{{ portonvpn }}.deb
+    dest: /tmp/{{ protonvpn }}.deb
   when: ansible_distribution == "Pop!_OS"
 - name: get ProtonVPN .deb
   become_user: velociraptor
   get_url:
-    url: https://repo.protonvpn.com/debian/dists/stable/main/binary-all/{{ portonvpn }}.deb
-    dest: /tmp/{{ portonvpn }}.deb
+    url: https://repo.protonvpn.com/debian/dists/stable/main/binary-all/{{ protonvpn }}.deb
+    dest: /tmp/{{ protonvpn }}.deb
   when: ansible_distribution == "Pop!_OS"
 
 - name: install ProtonVPN .deb 
   become: true
   apt:
-    deb: /tmp/{{ portonvpn }}.deb
+    deb: /tmp/{{ protonvpn }}.deb
   when: ansible_distribution == "Pop!_OS"
 
 - name: install packages (Debian)
