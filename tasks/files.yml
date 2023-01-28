@@ -128,7 +128,7 @@
 
 - name: add line to auto.master
   ansible.builtin.lineinfile:
-    path: /etc/autofs/auto.master
+    path: /etc/auto.master
     line: /mnt/truenas /etc/autofs.nfs --ghost --timeout=60
     owner: root
     group: root
