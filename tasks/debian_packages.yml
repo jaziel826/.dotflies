@@ -60,7 +60,7 @@
 - name: Add directory to PATH
   tags: "cargo,path"
   lineinfile:
-    path: /home/jaziel/.cargo/bin
+    path: /etc/environment
     state: present
     regexp: '^PATH='
     line: 'PATH="/home/jaziel/.cargo/bin:{{ ansible_env.PATH }}"'
