@@ -47,30 +47,6 @@
     owner: root
     group: root 
 
-#  - name: set wallpaper
-#    become_user: jay
-#    dconf:
-#      key: "/org/gnome/desktop/background/picture-uri"
-#      value: "'file:///usr/share/backgrounds/ansible-wallpaper.png'"
-#
-#  - name: set wallpaper position
-#    become_user: jay
-#    dconf:
-#      key: "/org/gnome/desktop/background/picture-options"
-#      value: "'zoom'"
-
-#- name: copy .bashrc file
-# tags: "bash,install"
-#  copy:
-#   src: ./bash/.bashrc
-#   dest: /home/jaziel/.bashrc
-#   owner: jaziel
-#   group: jaziel
-#  - name: stow dotfiles
-#    tags: "install,stow"
-#    shell: "stow -d $HOME/.dotfiles/files/* --target $HOME --verbose=2"  
-#    register: result  
-#    changed_when: 'result.stderr is search("LINK: ")'
 - name: create paths
   become_user: jaziel
   tags: "install,dotfiles,file"
@@ -133,6 +109,7 @@
     owner: root
     group: root
     create: no
+
 - name: add lin to autofs.nfs
   ansible.builtin.lineinfile:
     path: /etc/autofs.nfs
@@ -140,6 +117,7 @@
     owner: root
     group: root
     create: yes
+
 - name: Restart service autofs, in all cases
   ansible.builtin.service:
     name: autofs

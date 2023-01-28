@@ -7,8 +7,10 @@
       - btop
       - tmux
       - cronie
+      - bat
       - stow
       - rsync
+      - autofs
       - vim
       - flatpak
       - tailscale 

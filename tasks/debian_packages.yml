@@ -33,6 +33,7 @@
       - nala
       - tmux
       - cron
+      - bat
       - rsync
       - vim
       - cmake
