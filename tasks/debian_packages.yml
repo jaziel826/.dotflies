@@ -56,12 +56,12 @@
   flatpak_remote:
     name: flathub
     state: present
-    flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
+    flatpakrepo_url: https://flathub.org/repo/flathub.flatpakrepo 
     method: system
   when: ansible_distribution == "Pop!_OS"
 - name: install flatpaks
-  flatpak:
-    name: 
+  shell: flatpak install -y {{item}}
+    with_items: 
       - com.bitwarden.desktop 
       - org.onlyoffice.desktopeditors 
       - us.zoom.Zoom 
