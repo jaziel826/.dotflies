@@ -40,7 +40,7 @@
       - tailscale 
       - fonts-jetbrains-mono
       - ttf-bitstream-vera
-      - fonts-font-awsome
+      - fonts-font-awesome
       - exa 
       - alacritty 
       - protonvpn 
