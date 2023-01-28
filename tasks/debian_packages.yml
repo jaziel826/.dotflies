@@ -38,6 +38,11 @@
       - cmake
       - flatpak
       - tailscale 
+      - font-jetbrains-mono
+      - ttf-bitstream-vera
+      - font-font-awsome
+      - exa 
+      - 
       - alacritty 
       - protonvpn 
       - lfm
@@ -48,6 +53,7 @@
   when: ansible_distribution == "Pop!_OS"
 
 - name: install starship 
+  become_user: jaziel
   shell: cargo install starship
   tags: "cargo,package"
   when: ansible_distribution == "Pop!_OS"
