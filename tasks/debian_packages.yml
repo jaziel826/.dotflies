@@ -62,13 +62,13 @@
 - name: install flatpaks
   community.general.flatpak:
     name:
-      - com.bitwarden.desktop 
-      - org.onlyoffice.desktopeditors 
-      - us.zoom.Zoom 
-      - org.mozilla.Thunderbird 
-      - org.signal.Signal 
-      - com.discordapp.Discord 
-      - com.borgbase.Vorta
+      - bitwarden 
+      - onlyoffice 
+      - Zoom 
+      - Thunderbird 
+      - Signal 
+      - Discord 
+      - Vorta
     state: present 
   when: ansible_distribution == "Pop!_OS"
 
