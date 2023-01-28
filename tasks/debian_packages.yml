@@ -61,9 +61,7 @@
   when: ansible_distribution == "Pop!_OS"
 - name: install flatpaks
   flatpak:
-    name: '{{item}}'
-    state: present 
-    with_items:   
+    name: 
       - com.bitwarden.desktop 
       - org.onlyoffice.desktopeditors 
       - us.zoom.Zoom 
@@ -71,6 +69,8 @@
       - org.signal.Signal 
       - com.discordapp.Discord 
       - com.borgbase.Vorta
+    state: present 
+    remote: flathub
   when: ansible_distribution == "Pop!_OS"
 
    
