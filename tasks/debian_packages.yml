@@ -1,3 +1,4 @@
+- include_vars: "{{ ansible_distribution }}.yml"
 - name: install tailscale (Debian)
   become_user: velociraptor
   tags: "apt,package,install"
