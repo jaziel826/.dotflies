@@ -93,12 +93,11 @@
     - ./files/tmux
     - ./files/vim
     - ./files/bash
+
 - name: back up .bashrc
   become_user: jaziel
   shell: mv $HOME/.bashrc $HOME/.bashrc.bk
-  when: stat.islink is not defined or stat.islink == false
-  args:
-    path: $HOME/.bashrc
+  when: not file.islnk('$HOME/.bashrc')
 
 - name: stow dotfiles
   become_user: jaziel
