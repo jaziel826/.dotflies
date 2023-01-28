@@ -38,6 +38,7 @@
       - cmake
       - flatpak
       - tailscale 
+      - autofs
       - fonts-jetbrains-mono
       - ttf-bitstream-vera
       - fonts-font-awesome

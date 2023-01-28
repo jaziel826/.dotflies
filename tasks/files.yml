@@ -117,3 +117,26 @@
     - tmux
     - vim
     - bash
+
+- name: create truenas paths
+  tags: "install,file"
+  file:
+    path: /mnt/truenas
+    owner: root 
+    group: root
+    state: directory 
+
+- name: add line to auto.master
+  ansible.builtin.lineinfile:
+    path: /etc/autofs/auto.master
+    line: /mnt/truenas /etc/autofs.nfs --ghost --timeout=60
+    owner: root
+    group: root
+    create: no
+- name: add lin to autofs.nfs
+  ansible.builtin.lineinfile:
+    path: /etc/autofs.nfs
+    line: vorta -fstype=nfs4,rw truenas.local:/mnt/ssd-storage/docker/vorta
+    owner: root
+    group: root
+    create: yes
