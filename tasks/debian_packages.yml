@@ -4,12 +4,6 @@
   shell: curl -fsSL https://tailscale.com/install.sh | sh
   when: ansible_distribution == "Pop!_OS"
 
-- name: install starship (Debian)
-  become_user: velociraptor
-  tags: "apt,package,install"
-  shell: curl -fsSL curl -sS https://starship.rs/install.sh | sh
-  when: ansible_distribution == "Pop!_OS"
-
 - name: get ProtonVPN .deb
   become_user: velociraptor
   get_url:
