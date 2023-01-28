@@ -140,3 +140,7 @@
     owner: root
     group: root
     create: yes
+- name: Restart service autofs, in all cases
+  ansible.builtin.service:
+    name: autofs
+    state: restarted
