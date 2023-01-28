@@ -42,4 +42,5 @@
   - import_tasks: tasks/arch_packages.yml
     when: ansible_distribution in ["Archlinux", "EndeavourOS"]
   - import_tasks: tasks/debian_packages.yml
+    when: ansible_distribution == "Pop!_OS"
   - import_tasks: tasks/files.yml

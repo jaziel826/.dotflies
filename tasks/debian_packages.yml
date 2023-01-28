@@ -60,7 +60,7 @@
     method: system
   when: ansible_distribution == "Pop!_OS"
 - name: install flatpaks
-  flatpak:
+  community.general.flatpak:
     name:
       - com.bitwarden.desktop 
       - org.onlyoffice.desktopeditors 
