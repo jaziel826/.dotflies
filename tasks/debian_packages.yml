@@ -58,6 +58,7 @@
   when: ansible_distribution == "Pop!_OS"
 
 - name: Add directory to PATH
+  tags: "cargo,path"
   lineinfile:
     path: /home/jaziel/.cargo/bin
     state: present
