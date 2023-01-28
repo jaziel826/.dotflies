@@ -57,7 +57,7 @@
     name: flathub
     state: present
     flatpakrepo_url: https://flathub.org/repo/flathub.flatpakrepo
-    method: user
+    method: system
   when: ansible_distribution == "Pop!_OS"
 - name: install flatpaks
   flatpak:
