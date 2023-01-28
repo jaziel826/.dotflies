@@ -35,6 +35,7 @@
       - cron
       - rsync
       - vim
+      - cmake
       - flatpak
       - tailscale 
       - alacritty 
