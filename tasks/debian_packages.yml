@@ -41,6 +41,7 @@
       - alacritty 
       - protonvpn 
       - lfm
+      - stow
       - rofi
       - cargo
     state: present 
