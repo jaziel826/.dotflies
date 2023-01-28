@@ -61,16 +61,16 @@
   when: ansible_distribution == "Pop!_OS"
 - name: install flatpaks
   shell: flatpak install -y {{item}}
-    with_items: 
-      - com.bitwarden.desktop 
-      - org.onlyoffice.desktopeditors 
-      - us.zoom.Zoom 
-      - org.mozilla.Thunderbird 
-      - org.signal.Signal 
-      - com.discordapp.Discord 
-      - com.borgbase.Vorta
-    state: present 
-    remote: flathub
+  with_items: 
+    - com.bitwarden.desktop 
+    - org.onlyoffice.desktopeditors 
+    - us.zoom.Zoom 
+    - org.mozilla.Thunderbird 
+    - org.signal.Signal 
+    - com.discordapp.Discord 
+    - com.borgbase.Vorta
+      #    state: present 
+      #   remote: flathub
   when: ansible_distribution == "Pop!_OS"
 
    
