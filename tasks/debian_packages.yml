@@ -38,9 +38,9 @@
       - cmake
       - flatpak
       - tailscale 
-      - font-jetbrains-mono
+      - fonts-jetbrains-mono
       - ttf-bitstream-vera
-      - font-font-awsome
+      - fonts-font-awsome
       - exa 
       - alacritty 
       - protonvpn 
