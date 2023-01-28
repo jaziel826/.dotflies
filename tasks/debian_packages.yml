@@ -46,9 +46,14 @@
       - alacritty 
       - protonvpn 
       - lfm
-      - starship 
       - rofi
+      - cargo
     state: present 
+  when: ansible_distribution == "Pop!_OS"
+
+- name: install starship 
+  shell: cargo install starship
+  tags: "cargo,package"
   when: ansible_distribution == "Pop!_OS"
 
 - name: Add the flathub flatpak repository remote to the user installation
