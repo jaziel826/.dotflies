@@ -10,6 +10,7 @@
       - bat
       - stow
       - exa
+      - trash-cli
       - rsync
       - autofs
       - vim
