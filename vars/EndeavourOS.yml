@@ -1,2 +1,1 @@
-auto_master: /etc/autofs/auto.master
-
+../vars/Archlinux.yml

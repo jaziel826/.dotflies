@@ -58,7 +58,6 @@
     state: present
     flatpakrepo_url: https://flathub.org/repo/flathub.flatpakrepo 
     method: system
-  when: ansible_distribution == "Pop!_OS"
 
 - name: install flatpaks
   shell: flatpak install -y --system {{item}}
@@ -72,6 +71,7 @@
     - com.borgbase.Vorta
   become_user: velociraptor
   become: true
+
 - name: pacman - enable color
   lineinfile:
     path: /etc/pacman.conf
