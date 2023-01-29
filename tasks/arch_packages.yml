@@ -9,6 +9,7 @@
       - cronie
       - bat
       - stow
+      - exa
       - rsync
       - autofs
       - vim
@@ -39,7 +40,7 @@
       - ttf-weather-icons 
       - starship 
       - rofi-bluetooth-git 
-      - rofi-lbonn-wayland-git 
+    #  - rofi-lbonn-wayland-git 
       - rofi-wifi-menu-git 
       - sway 
       - swayidle 
@@ -49,24 +50,36 @@
       - swaysettings-git
       - networkmanager-dmenu-git
     state: present 
-  become_user: velociraptor
-  become: true
+
 - name: Add the flathub flatpak repository remote to the user installation
   tags: "flatpak,package,install"
   flatpak_remote:
     name: flathub
     state: present
-    flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo_url
-    method: user
+    flatpakrepo_url: https://flathub.org/repo/flathub.flatpakrepo 
+    method: system
+  when: ansible_distribution == "Pop!_OS"
+
 - name: install flatpaks
-  flatpak:
-    name:
-      - com.bitwarden.desktop 
-      - org.onlyoffice.desktopeditors 
-      - us.zoom.Zoom 
-      - org.mozilla.Thunderbird 
-      - org.signal.Signal 
-      - com.discordapp.Discord 
-      - com.borgbase.Vorta
-    state: present 
-   
+  shell: flatpak install -y --system {{item}}
+  with_items: 
+    - com.bitwarden.desktop 
+    - org.onlyoffice.desktopeditors 
+    - us.zoom.Zoom 
+    - org.mozilla.Thunderbird 
+    - org.signal.Signal 
+    - com.discordapp.Discord 
+    - com.borgbase.Vorta
+  become_user: velociraptor
+  become: true
+- name: pacman - enable color
+  lineinfile:
+    path: /etc/pacman.conf
+    regexp: '^#Color$'
+    line: 'Color'
+
+- name: pacman - enable ParallelDownloads = 10
+  lineinfile:
+    path: /etc/pacman.conf
+    regexp: '#ParallelDownloads = 10'
+    line: 'ParallelDownloads = 10'
