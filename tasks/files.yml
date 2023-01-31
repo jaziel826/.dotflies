@@ -61,15 +61,28 @@
   become_user: jaziel 
   tags: "install,dotfiles"
   copy:
-    src: '{{item}}'
+    src: ./files/'{{item}}'
     dest: $HOME/.dotfiles/files
     owner: jaziel
     group: jaziel
   with_items:
-    - ./files/.config
-    - ./files/tmux
-    - ./files/vim
-    - ./files/bash
+    - alacritty
+    - btop
+    - lf
+    - mako
+    - networkmanager-dmenu
+    - polybar
+    - polybar_old
+    - rofi
+    - starship
+    - sway
+    - swaync
+    - ulauncher
+    - wall
+    - waybar
+    - tmux
+    - vim
+    - bash
 
 - name: Check if file is not a symbolic link
   stat:
@@ -90,7 +103,20 @@
     dir: $HOME/.dotfiles/files
     target: $HOME
   with_items:  
-    - .config
+    - alacritty
+    - btop
+    - lf
+    - mako
+    - networkmanager-dmenu
+    - polybar
+    - polybar_old
+    - rofi
+    - starship
+    - sway
+    - swaync
+    - ulauncher
+    - wall
+    - waybar
     - tmux
     - vim
     - bash

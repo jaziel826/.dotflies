@@ -14,6 +14,22 @@ QT_STYLE_OVERRIDE=kvantum
 alias update-grub="sudo grub-mkconfig -o /boot/grub/grub.cfg"
 alias rm='trash'
 
+
+lfcd () {
+    tmp="$(mktemp)"
+    lf -last-dir-path="$tmp" "$@"
+    if [ -f "$tmp" ]; then
+        dir="$(cat "$tmp")"
+        rm -f "$tmp"
+        if [ -d "$dir" ]; then
+            if [ "$dir" != "$(pwd)" ]; then
+                cd "$dir"
+            fi
+        fi
+    fi
+}
+
+
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
@@ -220,3 +236,5 @@ alias spt='spotifyd && spt '
 
 source /home/jaziel/.config/broot/launcher/bash/br
 eval $(keychain --eval --quiet)
+
+
