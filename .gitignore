@@ -1,4 +1,4 @@
-files/tmux/.tmux/plugins/*
-files/tmux/.tmux/resurrect/*
-files/.config/.config/polybar_old/scripts/Tiny_polybar
-files/.config/.config/ulauncher/ext_preferences/
+files/tmux/.tmux/plugins/
+files/tmux/.tmux/resurrect/
+files/polybar_old/.config/polybar_old/scripts/Tiny_polybar
+files//ulauncher/.config/ulauncher/ext_preferences
