@@ -225,7 +225,7 @@ alias cat='bat'
 # alias pacdiff=_Pacdiff
 ################################################################################
 eval "$(starship init bash)"
-fm6000 -r -c blue
+#fm6000 -r -c blue
 HISTCONTROL=ingnoreboth
 HISTTIMEFORMAT="%Y-%m-%d %T "
 PATH=/usr/local/sbin:/usr/local/bin:/usr/bin:/var/lib/flatpak/exports/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:~/.config/rofi
@@ -237,4 +237,4 @@ alias spt='spotifyd && spt '
 source /home/jaziel/.config/broot/launcher/bash/br
 eval $(keychain --eval --quiet)
 
-
+pfetch

@@ -7,7 +7,7 @@
       tags: always
       pacman: 
         update_cache: yes
-        upgrade: no
+        upgrade: false
       changed_when: False
       when: ansible_distribution in ["Archlinux", "EndeavourOS"]
 

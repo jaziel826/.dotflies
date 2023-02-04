@@ -120,6 +120,8 @@
     - tmux
     - vim
     - bash
+    - foot
+    - ctpv
 
 - name: create truenas paths
   tags: "install,file"
