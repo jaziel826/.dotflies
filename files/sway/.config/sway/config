@@ -100,7 +100,7 @@ exec_always {
 
     # Exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
-    bindsym $mod+Shift+Delete exec "~/.config/rofi/scripts/powermenu_t2"
+    bindsym $mod+Shift+Delete exec "$HOME/.config/rofi/scripts/powermenu_t2"
 
     bindsym $mod+Shift+b exec firefox
 #

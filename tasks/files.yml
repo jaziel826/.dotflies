@@ -122,6 +122,7 @@
     - bash
     - foot
     - ctpv
+    - wluma
 
 - name: create truenas paths
   tags: "install,file"
