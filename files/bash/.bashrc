@@ -233,6 +233,8 @@ alias vw='vim -c VimwikiIndex'
 alias v='vim '
 alias se='sudoedit '
 alias spt='spotifyd && spt '
+alias pc='protonvpn-cli connect'
+alias pr='protonvpn-cli reconnect'
 
 source /home/jaziel/.config/broot/launcher/bash/br
 eval $(keychain --eval --quiet)
