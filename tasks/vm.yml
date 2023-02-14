@@ -2,8 +2,12 @@
    ansible.builtin.service:
      name: libvirtd
      state: started
-- name: start vm network 
-  shell: sudo virsh net-start default && sudo virsh net-autostart default
+- name: start vm network
+  become: velociraptor
+  shell: virsh net-start default
+- name: autostart vm network 
+  become: velociraptor
+  shell: virsh net-autostart default
 - name: add jaziel to vm groups 
   ansible.builtin.user:
     name: jaziel
