@@ -1,2 +1,4 @@
 protonvpn: protonvpn-stable-release_1.0.3_all
 auto_master: /etc/auto.master
+packages:  
+ - { name: 'alacritty', 'btop', 'lf', 'mako', 'networkmanagerdmenu', 'polybar', 'polybar_old', 'rofi', 'starship',  'sway', 'swaync', 'ulauncher', 'wall', 'waybar', 'tmux', 'vim', 'bash', 'foot', 'ctpv', 'wluma', 'fuzzel', 'tofi'}

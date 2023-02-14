@@ -4,10 +4,21 @@
     name: velociraptor
     system: yes
 - name: add ssh key for velociraptor
-  tags: user
+  tags: "user,ssh"
   authorized_key:
     user: velociraptor
-    key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJHHyFw2Hoxf6zpNe9L28iwVyET5FQUHAJ1hZQInJWS4 laptop"
+    key: '{{ item }}'
+  with_items:
+    - "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDVT+W2eN953o00auLr83UG5zL6O7OkpJGcdqmEWfNsSi/2yMzSTq0gjXOt7g5Cn6FAza8QLfxwFiHxDvgIv7ugqSVRAS0pA8h1TfuG+4sm6Oi6VM5ZnviVoqaIJU47naw8jtQAULisZYF9HGOKMlufgngcTOjhjpXaFefjyVyCvCaeMwK1rKlO7z2LKyfokqhxS9E2ywfCm7byefElTCpKJB9oXlaJT3RGLsxQqNHFubSrkvAap55ddyBgH3IpWQ/eQWD8h+JlJ04lMLB0umBzOsg/5xIAxz7mKt7/9egW++hfeQkm3ilWm2pt/URmvJKu7QlACoWwkXQ3c07xUVO4zscdbmL8BnTi/T+Zzj5pJW+PRJZIH79yq7NKYtRiFudWems1Fx/ydI/ioDbAHhoeS+9JKFdgTCf5K43iKtxnvV2fH/kcEi6ey2BoocNUyOu1gaEJ4OwsET+KttJoHdg320Mrg9+CGoiqA+FXD8Ejhy1LJVlyRPihdKfI/pTXM+TCxfvl8bbr6rnR1KsRdzSasZwDICbLbGbe08wt+NnlGhcU5Quu2anSppoRhzpaV8Erw3W9mgxWqF5iJXuhq3qqWFjdgzeX53U8wX3hhOkHwlVSj70pFV9mmit94mqcHjLX+JImbdMgmAwilHPxmOjC4czXZSWNa4+5thlREy+zpQ== Yubikey" 
+    - "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJHHyFw2Hoxf6zpNe9L28iwVyET5FQUHAJ1hZQInJWS4 laptop"
+- name: add ssh key for velociraptor
+  tags: "user,ssh"
+  authorized_key:
+    user: jaziel
+    key: '{{ item }}'
+  with_items:
+    - "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDVT+W2eN953o00auLr83UG5zL6O7OkpJGcdqmEWfNsSi/2yMzSTq0gjXOt7g5Cn6FAza8QLfxwFiHxDvgIv7ugqSVRAS0pA8h1TfuG+4sm6Oi6VM5ZnviVoqaIJU47naw8jtQAULisZYF9HGOKMlufgngcTOjhjpXaFefjyVyCvCaeMwK1rKlO7z2LKyfokqhxS9E2ywfCm7byefElTCpKJB9oXlaJT3RGLsxQqNHFubSrkvAap55ddyBgH3IpWQ/eQWD8h+JlJ04lMLB0umBzOsg/5xIAxz7mKt7/9egW++hfeQkm3ilWm2pt/URmvJKu7QlACoWwkXQ3c07xUVO4zscdbmL8BnTi/T+Zzj5pJW+PRJZIH79yq7NKYtRiFudWems1Fx/ydI/ioDbAHhoeS+9JKFdgTCf5K43iKtxnvV2fH/kcEi6ey2BoocNUyOu1gaEJ4OwsET+KttJoHdg320Mrg9+CGoiqA+FXD8Ejhy1LJVlyRPihdKfI/pTXM+TCxfvl8bbr6rnR1KsRdzSasZwDICbLbGbe08wt+NnlGhcU5Quu2anSppoRhzpaV8Erw3W9mgxWqF5iJXuhq3qqWFjdgzeX53U8wX3hhOkHwlVSj70pFV9mmit94mqcHjLX+JImbdMgmAwilHPxmOjC4czXZSWNa4+5thlREy+zpQ== Yubikey" 
+    - "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJHHyFw2Hoxf6zpNe9L28iwVyET5FQUHAJ1hZQInJWS4 laptop"
 
 - name: set up sudo for ansible user
   tags: user

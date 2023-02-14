@@ -61,11 +61,11 @@
   become_user: jaziel 
   tags: "install,dotfiles"
   copy:
-    src: ./files/'{{item}}'
+    src: './files/{{ item }}'
     dest: $HOME/.dotfiles/files
     owner: jaziel
     group: jaziel
-  with_items:
+  with_items:  
     - alacritty
     - btop
     - lf
@@ -83,7 +83,11 @@
     - tmux
     - vim
     - bash
-
+    - foot
+    - ctpv
+    - wluma
+    - fuzzel
+    - tofi
 - name: Check if file is not a symbolic link
   stat:
     path: $HOME/.bashrc
@@ -98,8 +102,8 @@
   become_user: jaziel
   tags: "install,stow"
   stow:
-    state: supress
-    package: '{{ item }}'
+    state: latest
+    package: "{{ item }}"
     dir: $HOME/.dotfiles/files
     target: $HOME
   with_items:  
@@ -123,6 +127,7 @@
     - foot
     - ctpv
     - wluma
+    - fuzzel
 
 - name: create truenas paths
   tags: "install,file"

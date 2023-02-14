@@ -50,6 +50,7 @@
       - swaync-git 
       - swaysettings-git
       - networkmanager-dmenu-git
+      - fuzzel 
     state: present 
 
 - name: Add the flathub flatpak repository remote to the user installation

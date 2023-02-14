@@ -1,2 +1,26 @@
 auto_master: /etc/autofs/auto.master
-
+dir:  
+ - { name: 'alacritty', 'btop', 'lf', 'mako', 'networkmanagerdmenu', 'polybar', 'polybar_old', 'rofi', 'starship',  'sway', 'swaync', 'ulauncher', 'wall', 'waybar', 'tmux', 'vim', 'bash', 'foot', 'ctpv', 'wluma', 'fuzzel', 'tofi'}
+names:
+  - alacritty
+  - btop
+  - lf
+  - mako
+  - networkmanager-dmenu
+  - polybar
+  - polybar_old
+  - rofi
+  - starship
+  - sway
+  - swaync
+  - ulauncher
+  - wall
+  - waybar
+  - tmux
+  - vim
+  - bash
+  - foot
+  - ctpv
+  - wluma
+  - fuzzel
+  - tofi
