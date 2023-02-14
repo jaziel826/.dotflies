@@ -3,10 +3,10 @@
     name: libvirtd
     state: started
 - name: start vm network
-  become: velociraptor
+  become_user: velociraptor
   shell: virsh net-start default
 - name: autostart vm network 
-  become: velociraptor
+  become_user: velociraptor
   shell: virsh net-autostart default
 - name: add jaziel to vm groups 
   ansible.builtin.user:
