@@ -1,7 +1,7 @@
- - name: Restart service autofs, in all cases
-   ansible.builtin.service:
-     name: libvirtd
-     state: started
+- name: Restart service autofs, in all cases
+  ansible.builtin.service:
+    name: libvirtd
+    state: started
 - name: start vm network
   become: velociraptor
   shell: virsh net-start default
