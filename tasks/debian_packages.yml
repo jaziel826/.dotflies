@@ -11,12 +11,12 @@
     url: https://repo.protonvpn.com/debian/dists/stable/main/binary-all/{{ protonvpn }}.deb
     dest: /tmp/{{ protonvpn }}.deb
   when: ansible_distribution == "Pop!_OS"
-- name: get ProtonVPN .deb
-  become_user: velociraptor
-  get_url:
-    url: https://repo.protonvpn.com/debian/dists/stable/main/binary-all/{{ protonvpn }}.deb
-    dest: /tmp/{{ protonvpn }}.deb
-  when: ansible_distribution == "Pop!_OS"
+#- name: get ProtonVPN .deb
+#  become_user: velociraptor
+#  get_url:
+#    url: https://repo.protonvpn.com/debian/dists/stable/main/binary-all/{{ protonvpn }}.deb
+#    dest: /tmp/{{ protonvpn }}.deb
+#  when: ansible_distribution == "Pop!_OS"
 
 - name: install ProtonVPN .deb 
   become: true
@@ -24,6 +24,18 @@
     deb: /tmp/{{ protonvpn }}.deb
   when: ansible_distribution == "Pop!_OS"
 
+- name: get Portmaster .deb
+  become_user: velociraptor
+  get_url:
+    url: https://updates.safing.io/latest/linux_amd64/packages/portmaster-installer.deb
+    dest: /tmp/portmaster.deb
+  when: ansible_distribution == "Pop!_OS"
+
+- name: install Portmaster .deb 
+  become: true
+  apt:
+    deb: /tmp/portmaster.deb
+  when: ansible_distribution == "Pop!_OS"
 - name: install packages (Debian)
   become: true
   tags: "apt,package,install"
@@ -45,14 +57,30 @@
       - ttf-bitstream-vera
       - fonts-font-awesome
       - exa 
-      - alacritty 
-      - protonvpn 
+      - alacritty  
       - lfm
       - stow
       - rofi
       - cargo
+      - qemu-kvm 
+      - qemu-system 
+      - qemu-utils 
+      - python3 
+      - python3-pip 
+      - libvirt-clients 
+      - libvirt-daemon-system 
+      - bridge-utils 
+      - virtinst
+      - libvirt-daemon 
+      - virt-manager
+
     state: present 
   when: ansible_distribution == "Pop!_OS"
+
+- name: Restart service autofs, in all cases
+  ansible.builtin.service:
+    name: libvirtd
+    state: started
 
 - name: install starship 
   become_user: jaziel

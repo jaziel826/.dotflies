@@ -218,7 +218,8 @@ vicd()
 ## Aliases for the functions above.
 ## Uncomment an alias if you want to use it.
 ##
-export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+#export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 alias nnn='nnn -Hade'
 alias cat='bat'
 # alias ef='_open_files_for_editing'     # 'ef' opens given file(s) for editing

@@ -19,7 +19,7 @@ set $term foot
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-set $menu /bin/ulauncher-toggle
+set $menu /bin/fuzzel
 # ~/.config/rofi/scripts/launcher_t4 
 
 ### Output configuration
@@ -102,6 +102,7 @@ exec_always {
     bindsym $mod+Shift+Delete exec "$HOME/.config/rofi/scripts/powermenu_t2"
 
     bindsym $mod+Shift+b exec firefox
+    bindsym Alt+c exec clipman pick -t CUSTOM -T "fuzzel -d -f JetBrains Mono:9" 
 #
 # Moving around:
 #
@@ -262,6 +263,8 @@ input type:touchpad {
 exec_always /home/jaziel/.config/sway/scripts/randomwall.sh &
 exec_always /usr/bin/lxpolkit
 exec_always swaync
+exec wl-paste -p -t text --watch clipman store -P --histpath="~/.local/share/clipman-primary.json"
+exec wl-paste -t text --watch clipman store
 #exec_always bitwarden-desktop
 for_window [title="^Bitwarden$"] {
     move to scratchpad
@@ -311,7 +314,7 @@ for_window [title="Ulauncher Preferences"] {
   sticky toggle 
 }
 exec sway-autostart
-exec_always ulauncher
+#exec_always ulauncher
 
 
 # Look and Feel

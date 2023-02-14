@@ -281,7 +281,7 @@
 
 
 .power-buttons>button {
-  background: transparent;
+  background: @noti-fg;
   border: none;
 }
 
