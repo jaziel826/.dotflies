@@ -67,6 +67,7 @@
       - qemu-utils 
       - python3 
       - python3-pip 
+      - btrbk
       - libvirt-clients 
       - libvirt-daemon-system 
       - bridge-utils 
