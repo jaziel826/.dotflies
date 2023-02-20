@@ -42,6 +42,7 @@
 #    executable: /usr/bin/bash
 - name: install packages (arch)
   tags: "aur,package,install"
+  become: true
   when: ansible_distribution in ["Archlinux", "EndeavourOS"]
   kewlfft.aur.aur:
     use: yay
