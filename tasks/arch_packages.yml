@@ -105,7 +105,7 @@
     method: system
 
 - name: install flatpaks
-  shell: flatpak install -y --system {{item}}
+  shell: flatpak install -y --user {{item}}
   with_items: 
     - com.bitwarden.desktop 
     - org.onlyoffice.desktopeditors 
@@ -128,3 +128,8 @@
     path: /etc/pacman.conf
     regexp: '#ParallelDownloads = 10'
     line: 'ParallelDownloads = 10'
+- name: makepkg - enable parallel compilation MAKEFLAGS="-j$(nproc)"
+  lineinfile:
+    path: /etc/makepkg.conf
+    regexp: '#MAKEFLAGS="-j2"'
+    line: 'MAKEFLAGS="-j$(nproc)"'
