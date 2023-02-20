@@ -14,7 +14,9 @@
 
 - name: Install pexpect
   pip:
-    name: pexpect
+    name: 
+      - pexpect
+      - setuptools
 
 - name: git clone yay-bin repo in to /tmp
   become: no
