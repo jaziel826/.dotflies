@@ -6,6 +6,15 @@
     line: "ALL ALL=NOPASSWD: /usr/bin/pacman"
     validate: /usr/sbin/visudo -cf %s
     create: yes
+- name: Install pip
+  apt:
+    update_cache: yes
+    name:
+      - python3-pip
+
+- name: Install pexpect
+  pip:
+    name: pexpect
 
 - name: git clone yay-bin repo in to /tmp
   become: no
