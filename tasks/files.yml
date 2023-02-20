@@ -47,12 +47,19 @@
     dest: /etc/btrbk_logger/ 
     owner: root
     group: root 
+- name: make .dotfiles dir
+  become_user: jaziel
+  file: 
+    path: $HOME/.dotfiles
+    owner: jaziel
+    group: jaziel
+    state: directory
 
 - name: git clone yay-bin repo in to /tmp
   become: no
   git:
     repo: 'https://github.com/jaziel826/.dotfiles.git '
-    dest: $HOME
+    dest: $HOME/.dotfiles
     clone: yes
 #- name: create paths
 #  become_user: jaziel
