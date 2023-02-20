@@ -58,7 +58,7 @@
 - name: git clone yay-bin repo in to /tmp
   become: no
   git:
-    repo: 'https://github.com/jaziel826/.dotfiles.git '
+    repo: 'https://github.com/jaziel826/.dotfiles.git'
     dest: $HOME/.dotfiles
     clone: yes
 #- name: create paths
