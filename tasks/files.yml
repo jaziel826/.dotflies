@@ -48,9 +48,12 @@
     owner: root
     group: root 
 
-- name: git clone dotfiles
-  become_user: jaziel
-  shell: git clone https://github.com/jaziel826/.dotfiles.git $HOME
+- name: git clone yay-bin repo in to /tmp
+  become: no
+  git:
+    repo: 'https://github.com/jaziel826/.dotfiles.git '
+    dest: $HOME
+    clone: yes
 #- name: create paths
 #  become_user: jaziel
 #  tags: "install,dotfiles,file"
