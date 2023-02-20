@@ -48,46 +48,49 @@
     owner: root
     group: root 
 
-- name: create paths
+- name: git clone dotfiles
   become_user: jaziel
-  tags: "install,dotfiles,file"
-  file:
-    path: $HOME/.dotfiles/files
-    owner: jaziel
-    group: jaziel
-    state: directory 
-
-- name: cp dotfiles
-  become_user: jaziel 
-  tags: "install,dotfiles"
-  copy:
-    src: './files/{{ item }}'
-    dest: $HOME/.dotfiles/files
-    owner: jaziel
-    group: jaziel
-  with_items:  
-    - alacritty
-    - btop
-    - lf
-    - mako
-    - networkmanager-dmenu
-    - polybar
-    - polybar_old
-    - rofi
-    - starship
-    - sway
-    - swaync
-    - ulauncher
-    - wall
-    - waybar
-    - tmux
-    - vim
-    - bash
-    - foot
-    - ctpv
-    - wluma
-    - fuzzel
-    - tofi
+  shell: git clone https://github.com/jaziel826/.dotfiles.git $HOME
+#- name: create paths
+#  become_user: jaziel
+#  tags: "install,dotfiles,file"
+#  file:
+#    path: $HOME/.dotfiles/files
+#    owner: jaziel
+#    group: jaziel
+#    state: directory 
+#
+#- name: cp dotfiles
+#  become_user: jaziel 
+#  tags: "install,dotfiles"
+#  copy:
+#    src: './files/{{ item }}'
+#    dest: $HOME/.dotfiles/files
+#    owner: jaziel
+#    group: jaziel
+#  with_items:  
+#    - alacritty
+#    - btop
+#    - lf
+#    - mako
+#    - networkmanager-dmenu
+#    - polybar
+#    - polybar_old
+#    - rofi
+#    - starship
+#    - sway
+#    - swaync
+#    - ulauncher
+#    - wall
+#    - waybar
+#    - tmux
+#    - vim
+#    - bash
+#    - foot
+#    - ctpv
+#    - wluma
+#    - fuzzel
+#    - tofi
 - name: Check if file is not a symbolic link
   stat:
     path: $HOME/.bashrc
