@@ -114,7 +114,7 @@
     - org.signal.Signal 
     - com.discordapp.Discord 
     - com.borgbase.Vorta
-  become_user: velociraptor
+  become_user: jaziel
   become: true
 
 - name: pacman - enable color
