@@ -37,7 +37,7 @@
 #  file:
 #    path: /etc/sudoers.d/temp_allow_no_pswd_pacman
 #    state: absent
-- name: Install trizen using makepkg if it isn't installed already
+- name: Install yay using makepkg if it isn't installed already
   kewlfft.aur.aur:
     name: paru
     use: makepkg
@@ -45,11 +45,11 @@
   become: yes
   become_user: velociraptor
 
-- name: set yay options to cleanafter package installation
-  become: no
-  shell: yay -Y --answerclean All --removemake --cleanafter --save
-  args:
-    executable: /usr/bin/bash
+#- name: set yay options to cleanafter package installation
+#  become: no
+#  shell: yay -Y --answerclean All --removemake --cleanafter --save
+#  args:
+#    executable: /usr/bin/bash
 - name: install packages (arch)
   tags: "aur,package,install"
   when: ansible_distribution in ["Archlinux", "EndeavourOS"]
