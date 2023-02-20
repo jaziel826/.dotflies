@@ -7,7 +7,7 @@
     validate: /usr/sbin/visudo -cf %s
     create: yes
 - name: Install pip
-  apt:
+  pacman:
     update_cache: yes
     name:
       - python-pip
