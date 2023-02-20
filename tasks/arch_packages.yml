@@ -10,7 +10,7 @@
   apt:
     update_cache: yes
     name:
-      - python3-pip
+      - python-pip
 
 - name: Install pexpect
   pip:
