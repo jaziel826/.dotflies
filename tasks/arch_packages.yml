@@ -62,6 +62,7 @@
       - alacritty 
       - ulauncher
       - protonvpn-cli 
+      - pfetch
       - lf
       - btrbk-git 
       - btrbk-pac-git 
@@ -126,7 +127,7 @@
 - name: pacman - enable ParallelDownloads = 10
   lineinfile:
     path: /etc/pacman.conf
-    regexp: '#ParallelDownloads = 10'
+    regexp: '#ParallelDownloads = 5'
     line: 'ParallelDownloads = 10'
 - name: makepkg - enable parallel compilation MAKEFLAGS="-j$(nproc)"
   lineinfile:
