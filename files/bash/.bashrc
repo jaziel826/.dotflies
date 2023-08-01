@@ -1,14 +1,24 @@
 #
 # ~/.bashrc
 #
-export EDITOR='vim'
+export EDITOR='nvim'
 export TERM=xterm-256color
-#export QT_QPA_PLATFORMTHEME=kvantum
+export QT_QPA_PLATFORMTHEME=kvantum
 export GTK_USE_PORTAL=1
 #export XDG_SESSION_TYPE=wayland
 #export GDK_BACKEND=wayland
 #export MOZ_ENABLE_WAYLAND=1
-QT_STYLE_OVERRIDE=kvantum
+export QT_STYLE_OVERRIDE=kvantum
+export SWWW_TRANSITION=center
+export INTERVAL=60
+export SWWW_TRANSITION_STEP=2
+export XDG_CACHE_HOME=$HOME/.cache
+export SWWW_TRANSITION_FPS=60
+#export WOBSOCK=$XDG_RUNTIME_DIR/wob.sock
+#export XDG_CURRENT_DESKTOP=Hyprland
+#export XDG_SESSION_TYPE=wayland
+#export XDG_SESSION_DESKTOP=Hyprland
+#export QT_QPA_PLATFORM="wayland;xcb"
 
 
 alias update-grub="sudo grub-mkconfig -o /boot/grub/grub.cfg"
@@ -231,13 +241,14 @@ HISTCONTROL=ingnoreboth
 HISTTIMEFORMAT="%Y-%m-%d %T "
 PATH=/usr/local/sbin:/usr/local/bin:/usr/bin:/var/lib/flatpak/exports/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:~/.config/rofi
 alias vw='vim -c VimwikiIndex'
-alias v='vim '
+alias v='nvim '
 alias se='sudoedit '
 alias spt='spotifyd && spt '
 alias pc='protonvpn-cli connect'
 alias pr='protonvpn-cli reconnect'
-
-source /home/jaziel/.config/broot/launcher/bash/br
-eval $(keychain --eval --quiet)
+alias zj='zellij'
+alias lob='lobster'
+#source /home/jaziel/.config/broot/launcher/bash/br
+#eval $(keychain --eval --quiet)
 
 pfetch

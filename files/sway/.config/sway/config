@@ -39,7 +39,7 @@ output eDP-1 mode 1920x1080 position 0,0
 # Example configuration:
 #
 bindsym $mod+Control+l exec $lock_path
- bindswitch --reload --locked lid:on exec $lock_path
+bindswitch --reload --locked lid:on exec $lock_path
 set $idle_path ~/.config/sway/scripts/idle.sh
 set $lock_path ~/.config/sway/scripts/lock.sh
 
@@ -99,7 +99,8 @@ exec_always {
 
     # Exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
-    bindsym $mod+Shift+Delete exec "$HOME/.config/rofi/scripts/powermenu_t2"
+    bindsym $mod+Shift+Delete exec wleave -k
+# "$HOME/.config/rofi/scripts/powermenu_t2"
 
     bindsym $mod+Shift+b exec firefox
     bindsym Alt+c exec clipman pick -t CUSTOM -T "fuzzel -d -f JetBrains Mono:9" 
@@ -261,7 +262,7 @@ input type:touchpad {
 }
 ## Autostart
 exec_always /home/jaziel/.config/sway/scripts/randomwall.sh &
-exec_always /usr/bin/lxpolkit
+exec /usr/lib/polkit-kde-authentication-agent-1
 exec_always swaync
 exec wl-paste -p -t text --watch clipman store -P --histpath="~/.local/share/clipman-primary.json"
 exec wl-paste -t text --watch clipman store
@@ -301,7 +302,7 @@ for_window [title="^(Picture-in-Picture|Picture in picture)$"] {
 }
 for_window [app_id="copyq"] {
   floating enable
-  resize set height /280
+  resize set height 280
   resize set width  500
   border none
   sticky toggle
@@ -323,6 +324,9 @@ exec_always autotiling-rs
 exec lxsessions --de=SWAY -a
 exec nm-applet
 default_border pixel 3
+exec_always export MOZ_ENABLE_WAYLAND=1
+exec_always export XDG_CURRENT_DESKTOP=sway
+exec_always export QT_QPA_PLATFORM=wayland-egl
 # class                 border  backgr. text    indicator child_border
 client.focused          #88c0d0 #434c5e #eceff4 #8fbcbb   #88c0d0
 client.focused_inactive #88c0d0 #2e3440 #d8dee9 #4c566a   #4c566a

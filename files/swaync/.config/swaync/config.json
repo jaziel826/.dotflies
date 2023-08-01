@@ -12,7 +12,7 @@
   "timeout": 10,
   "timeout-low": 5,
   "timeout-critical": 30,
-  "fit-to-screen": false,
+  "fit-to-screen": true,
   "control-center-width": 500,
   "control-center-height": 700,
   "notification-window-width": 500,
@@ -36,13 +36,13 @@
     }
   },
   "widgets": [
-    "brightness",
+    "label",
+    "menubar",
+    "buttons-grid",
+    "backlight",
     "volume",
     "mpris",
-    "label",
-    "controlls",
     "title",
-    "dnd",
     "notifications"
   ],
   "widget-config": {
@@ -56,51 +56,73 @@
     },
     "label": {
       "max-lines": 1,
-      "text": "Controll Center"
+      "text": "Control Center"
     },
     "mpris": {
       "image-size": 96,
       "image-radius": 12
     },
-    "brightness": {
-      "label": "",
+    "backlight": {
+      "label": "󰃠",
       "device": "amdgpu_bl0"
     },
     "volume": {
-      "label": ""
+      "label": " "
     },
-    "controlls": {
-      "screenshot-label": "",
-      "screenshot-command": "grim -g \"(slurp)\"",
-      "powermenu-label": "",
-      "power-buttons": [
+    "menubar": {
+      "menu#power": {
+        "label": "  Power Menu",
+        "position": "left",
+        "actions": [
+          {
+            "label": " Lock",
+            "command": "swaylock"
+          },
+          {
+            "label": "󰗽 Logout",
+            "command": "swaymsg exit"
+          },
+          {
+            "label": " Suspend",
+            "command": "systemctl suspend"
+          },
+          {
+            "label": " Reboot",
+            "command": "systemctl reboot"
+          },
+          {
+            "label": " Shutdown",
+            "command": "systemctl poweroff"
+          }
+        ]
+      }
+    },      
+ "buttons-grid": {
+      "actions": [
         {
-          "label": " Reboot",
-          "command": "systemctl reboot"
+          "label": "",
+          "command": "pactl set-sink-mute @DEFAULT_SINK@ toggle"
         },
         {
-          "label": " Lock",
-          "command": "$HOME/.config/sway/scripts/lock.sh"
+          "label": "",
+          "command": "pactl set-source-mute @DEFAULT_SOURCE@ toggle"
         },
         {
-          "label": " Logout",
-          "command": "swaymsg exit"
-        },
-        {
-          "label": " Shut down",
-          "command": "systemctl poweroff"
-        }
-      ],
-      "controll-buttons": [
-        {
-          "label": "直",
+          "label": "󰤨",
           "command": "networkmanager_dmenu"
         },
         {
-          "label": "",
-          "command": "rofi-bluetooth"
+            "label": "󰂯",
+            "command": "blueman-manager"
+        },
+        {
+            "label": "󰃜",
+            "command": "swaync-client -d -D"
+
         }
       ]
     }
   }
 }
+  
+

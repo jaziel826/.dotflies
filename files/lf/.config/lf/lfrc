@@ -118,7 +118,12 @@ cmd sudoedit ${{
   do
   sudo -e $file
   done
-
+}}
+cmd edit ${{
+  for file in "$fx"
+  do
+  $EDITOR $file
+  done
 }}
 cmd follow_link %{{
   lf -remote "send ${id} select '$(readlink $f)'"
@@ -281,8 +286,8 @@ map R reload
 map C clear
 map U unselect	
 map f fzf_jump
-map EE sudoedit
-
+map se sudoedit
+map e edit
 # JUMP 
 map gtr cd ~/.local/share/Trash/files
 map gw cd ~/.config/wall

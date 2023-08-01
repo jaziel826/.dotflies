@@ -13,6 +13,10 @@
 
 @define-color bg-selected #5e81ac;
 
+* {
+    font-family: "JetBrainsMono Nerd Font";
+}
+
 .notification-row {
   transition: all 200ms ease;
   outline: none;
@@ -233,7 +237,7 @@
 /* Title widget */
 .widget-title {
   margin: 8px;
-  font-size: 1.5rem;
+  font-size: 2rem;
 }
 .widget-title > button {
   font-size: initial;
@@ -273,7 +277,7 @@
   margin: 8px;
 }
 .widget-label > label {
-  font-size: 1.1rem;
+  font-size: 1.7rem;
 }
 
 /* Mpris widget */
@@ -293,3 +297,43 @@
 .widget-mpris-subtitle {
   font-size: 1.1rem;
 }
+.widget-menubar>box{
+  padding: 8px 0px 4px;
+  margin: 8px 8px;
+  border-radius: 4px 4px 0px 0px;
+  background-color: @noti-bg;
+}
+
+.widget-menubar>box>.menu-button-bar>button{
+  border: 1px solid @noti-border-color;
+  background: @noti-bg;
+  border-radius: 4px;
+  margin: 4px 12px;
+  font-size: 1rem;
+}
+
+.widget-buttons-grid{
+  padding: 0px 8px 8px;
+  margin: 0px 8px 8px;
+  border-radius: 0px 0px 4px 4px;
+  background-color: @noti-bg;
+  font-size: 1.5rem;
+}
+
+.widget-buttons-grid>flowbox>flowboxchild>button{
+  background: @noti-bg;
+  border-radius: 4px;
+}
+
+.widget-buttons-grid>flowbox>flowboxchild>button:hover {
+  background: @noti-bg-hover;
+}
+.powermode-buttons,
+.power-buttons{
+  border-radius: 4px;
+}
+.powermode-buttons>button:hover,
+.power-buttons>button:hover{
+  background: @noti-bg-hover;
+}
+

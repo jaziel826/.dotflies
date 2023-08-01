@@ -90,7 +90,7 @@ entry {
 /*****----- Listview -----*****/
 listview {
     enabled:                     true;
-    columns:                     5;
+    columns:                     3;
     lines:                       3;
     cycle:                       true;
     dynamic:                     true;
@@ -142,7 +142,7 @@ element selected.normal {
 element-icon {
     background-color:            transparent;
     text-color:                  inherit;
-    size:                        64px;
+    size:                        128px;
     cursor:                      inherit;
 }
 element-text {
